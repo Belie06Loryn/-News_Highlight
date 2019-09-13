@@ -1,0 +1,23 @@
+{% import 'macro.html' as macro %}
+{% extends 'base.html' %}
+<body>
+    {% block content %}
+    <h1 style="text-align:center"> NEWS ARTICLES </h1>
+        <div class="col-md-3"></div>
+        <div class="col-md-6" style="text-align:center"></div>
+        <ul>
+            {% for articles in articles %}
+                <li style="list-style-type:none; text-align:center"><h3> {{ articles.title}} </h3></li>
+                <li style="list-style-type:none; text-align:center"><img src="{{articles.urlToImage}}"> </li>
+                <li style="list-style-type:none"><p> {{ articles.description }} </p></li>
+                <li style="list-style-type:none; text-align:center"><p> {{ articles.publishedAt }}  </p></li>
+                <li style="list-style-type:none; text-align:center"><a href="{{ articles.url }}" class="btn btn-primary">Click Here For More Details</a> </li>
+                
+                <hr> 
+            {% endfor %}
+        </ul>
+        </div>
+    {% endblock %}
+        <div class="col-md-3"></div>
+
+</body>
