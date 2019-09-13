@@ -1,0 +1,17 @@
+{% macro displaySource(sources_list) %}
+
+    {% for source in sources_list %}
+        <li style="list-style-type: none"> {{ source.name }} </li>
+    {% endfor %}
+
+{% endmacro %}
+
+
+{% macro displayArticle(articles_list) %}
+
+    {% for article in articles_list %}
+        <li style="list-style-type:none"> {{ article.title }} </li>
+    {% endfor %}
+
+{% endmacro %}
+
