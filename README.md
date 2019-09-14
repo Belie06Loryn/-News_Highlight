@@ -3,6 +3,27 @@
 ## Author
 https://github.com/Belie06Loryn
 
+## Description
+News Highlight is a web application that is meant to catch up hard workers on current affairs happening all over the world. The website has the home page, that has a list of all sources of news. A user will have to click on Read More on a specific source to view artciles on the site Click here to see the live site
+
+
+## Known bugs
+No known errors if found drop a message on my profile
+
+## Technologies used
+
+Languages I have used:
+- Python 3.6
+- HTML
+- Bootstrap
+
+Tools that I have used:
+
+- Visual Studio Code as a text editor.
+- GitHub for hosting my project and keep it safe.
+- Heroku for Diploying a project
+
+
 
 ## Support and contact details
 If you meet an issues,you have questions,an ideas or concerns.Just contact me on https://github.com/Belie06Loryn .
