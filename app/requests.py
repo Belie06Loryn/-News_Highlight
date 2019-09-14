@@ -1,34 +1,36 @@
 import urllib.request, json
-from .models import Source, Article
+from .models_sources import Source
+from .models_article import Article
+from datetime import datetime
 
 
 api_key = None
-base_source_url = None
-base_article_url = None
+base_sources_url = None
+base_articles_url = None
 
 def configure_request(app):
     global api_key, base_article_url, base_source_url
     api_key = app.config['NEWS_API_KEY']
-    base_source_url = app.config['NEWS_SOURCES_API_BASE_URL']
-    base_article_url = app.config['NEWS_ARTICLES_API_BASE_URL']
+    base_sources_url = app.config['NEWS_SOURCES_API_BASE_URL']
+    base_articles_url = app.config['NEWS_ARTICLES_API_BASE_URL']
 
-def get_sources():
+def get_sources(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_source_url = base_source_url.format(api_key)
+    get_source_url = base_sources_url.format(category,api_key)
     print(get_source_url)
     with urllib.request.urlopen(get_source_url) as url:
         get_source_data = url.read()
         get_source_response = json.loads(get_source_data)
         print(get_source_response)
-        source_results = None
+        sources_list = None
 
         if get_source_response['sources']:
-            source_results_list = get_source_response['sources']
-            source_results = process_source(source_results_list)
+            sources_list_list = get_source_response['sources']
+            sources_list = process_sources(sources_list_list)
 
-    return source_results
+    return sources_list
 
 
 def process_sources(sources_list):
@@ -37,9 +39,9 @@ def process_sources(sources_list):
     Args:
         source_list: A list of dictionaries that contain movie details
     Returns :
-        source_results: A list of source objects
+        sources_list: A list of source objects
     '''
-    source_results = []
+    sources_list = []
     for source_item in source_list:
         id = source_item.get('id')
         name = source_item.get('name')
@@ -50,11 +52,9 @@ def process_sources(sources_list):
         country = source_item.get('country')
 
         source_object = Source(id, name, description, url, category, language, country)
-        source_results.append(source_object)
-        
-        # source_results.append(Source(id, name, description, url, category, language, country))
+        sources_list.append(source_object)
 
-    return source_results
+    return sources_list
 
 
 
@@ -63,19 +63,19 @@ def get_articles():
     '''
     Function that gets the json response to our url request
     '''
-    get_articles_url = base_article_url.format('everything', api_key) + "&sources="
+    get_articles_url = base_articles_url.format(api_key)
 
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
 
-        articles_results = None
+        articles_lists = None
 
         if get_articles_response['articles']:
-            articles_results_list = get_articles_response['articles']
-            articles_results = process_articles(articles_results_list)
+            articles_lists_list = get_articles_response['articles']
+            articles_lists = process_articles(articles_lists_list)
 
-    return articles_results
+    return articles_lists
 
 def process_articles(articles_list):
     '''
@@ -83,9 +83,9 @@ def process_articles(articles_list):
     Args:
         articles_list: A list of dictionaries that contain articles details
     Returns :
-        articles_results: A list of articles objects
+        articles: A list of articles objects
     '''
-    articles_results = []
+    articles = []
     for articles_item in articles_list:
         id = articles_item.get('id')
         name = articles_item.get('name')
@@ -97,6 +97,7 @@ def process_articles(articles_list):
         publishedAt = articles_item.get('publishedAt')
         content = articles_item.get('conent')
 
-        articles_results.append(Article(id, name, author, title, description, url, urlToImage, publishedAt, content))
+        article_object = Article(id, name, author, title, description, url, urlToImage, publishedAt, content)
+        articles_lists.append(article_object)
 
-    return articles_results
+    return articles_lists

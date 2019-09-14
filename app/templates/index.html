@@ -3,16 +3,9 @@
 
     <body>
         {% block content %}
-            <h1 style="text-align:center"> NEWS SOURCES </h1>
-            <ul>
-                {% for source in news_source %}
-                    <li style="list-style-type:none;"><h3> <a href="{{ source.url}}">{{ source.name}}</a> </h3></li>
-                    <li style="list-style-type:none"><p> {{ source.description }} </p></li>
-                    <a href="/news_article/{{ source.id }}" class="btn btn-primary">Click Here For Articles</a>
-                    
-                    <hr> 
-                {% endfor %}
-            </ul>
+           {% block news_source %}
+                {% include 'news_source.html' %}
+           {% endblock %}
         {% endblock %}
     </body>
 
