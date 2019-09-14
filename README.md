@@ -6,6 +6,13 @@ https://github.com/Belie06Loryn
 ## Description
 News Highlight is a web application that is meant to catch up hard workers on current affairs happening all over the world. The website has the home page, that has a list of all sources of news. A user will have to click on Read More on a specific source to view artciles on the site Click here to see the live site
 
+### Set-up and Installation
+- Clone the Repo using this command: cd git clone https://github.com/Belie06Loryn/-News_Highlight.git
+- Edit the start.sh file with your api key from the news.org website
+- Install python 3.6
+- Run chmod a+x start.py
+- Run ./start.py
+- Access the application through `http://127.0.0.1:5000/`
 
 ## Known bugs
 No known errors if found drop a message on my profile
