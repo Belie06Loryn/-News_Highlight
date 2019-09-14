@@ -23,7 +23,10 @@ Tools that I have used:
 - GitHub for hosting my project and keep it safe.
 - Heroku for Diploying a project
 
-
+### BDD
+- The home page allows users to see various news sources sorted based on categories and select their preference.
+- Once selected, a list of all articles for that news source with image description and time of posting article is shown.
+- User can click on an article and read it fully from the news source.
 
 ## Support and contact details
 If you meet an issues,you have questions,an ideas or concerns.Just contact me on https://github.com/Belie06Loryn .
