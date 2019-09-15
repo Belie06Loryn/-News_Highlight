@@ -3,9 +3,20 @@
 
     <body>
         {% block content %}
-           {% block news_source %}
-                {% include 'news_source.html' %}
-           {% endblock %}
+            <h1 style="text-align:center"> NEWS SOURCES </h1>
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="text-align:center"></div>
+                    <ul>
+                        {% for source_item in sources_lists %}
+                            <li style="list-style-type:none;"><h3> <a href="{{ source_item.url}}">{{ source_item.name}}</a> </h3></li>
+                            <li style="list-style-type:none"><p> {{ source_item.description }} </p></li>
+                            <a href="/news_article/{{ source_item.id }}" class="btn btn-primary">Click Here For Articles</a>
+                            
+                            <hr> 
+                        {% endfor %}
+                    </ul>
+                </div>
         {% endblock %}
+        <div class="col-md-3"></div>
     </body>
 

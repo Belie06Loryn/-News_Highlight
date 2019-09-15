@@ -5,19 +5,19 @@ from ..requests import get_articles, get_sources
 from . import main
 
 @main.route('/')
-def news_source():
+def index():
     """
-    This  it's gone turn news_source.html page and it content
+    This  it's gone turn index.html page and it content
     """
     isoko = get_sources('general')
 
     head = "ALLOVER THE WORLD NEWS"
-    return render_template('news_source.html', title = head, sources = isoko)
+    return render_template('index.html', title = head, isoko = isoko)
 
-@main.route('/isoko/<articles_id>')
-def news_article(articles_id):
+@main.route('/isoko/<id>')
+def news_article(id):
     """
     This is gone to returns articles details
     """
-    articles = get_articles()
+    articles = get_articles(id)
     return render_template('news_article.html', articles = articles)

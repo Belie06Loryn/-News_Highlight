@@ -1,4 +1,4 @@
-import urllib.request, json
+import urllib.request,json
 from .models_sources import Source
 from .models_article import Article
 from datetime import datetime
@@ -11,6 +11,7 @@ base_articles_url = None
 def configure_request(app):
     global api_key, base_articles_url, base_sources_url
     api_key = app.config['NEWS_API_KEY']
+    print(api_key)
     base_sources_url = app.config['NEWS_SOURCES_API_BASE_URL']
     base_articles_url = app.config['NEWS_ARTICLES_API_BASE_URL']
 
@@ -24,13 +25,13 @@ def get_sources(category):
         get_source_data = url.read()
         get_source_response = json.loads(get_source_data)
         print(get_source_response)
-        sources_list = None
+        sources_lists = None
 
         if get_source_response['sources']:
-            sources_list_list = get_source_response['sources']
-            sources_list = process_sources(sources_list_list)
+            sources_lists_list = get_source_response['sources']
+            sources_lists = process_sources(sources_lists_list)
 
-    return sources_list
+    return sources_lists
 
 
 def process_sources(sources_list):
@@ -41,7 +42,7 @@ def process_sources(sources_list):
     Returns :
         sources_list: A list of source objects
     '''
-    sources_list = []
+    sources_lists = []
     for source_item in sources_list:
         id = source_item.get('id')
         name = source_item.get('name')
@@ -52,9 +53,9 @@ def process_sources(sources_list):
         country = source_item.get('country')
 
         source_object = Source(id, name, description, url, category, language, country)
-        sources_list.append(source_object)
+        sources_lists.append(source_object)
 
-    return sources_list
+    return sources_lists
 
 
 
@@ -98,6 +99,6 @@ def process_articles(articles_list):
         content = articles_item.get('conent')
 
         article_object = Article(id, name, author, title, description, url, urlToImage, publishedAt, content)
-        articles_lists.append(article_object)
+        articles.append(article_object)
 
     return articles_lists
