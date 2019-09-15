@@ -1,5 +1,5 @@
-### NewsHighlight
-# By Alexie MANIRAKORA Semptember 13th, 2019
+# NewsHighlight
+### By Alexie MANIRAKORA Semptember 13th, 2019
 ## Author
 https://github.com/Belie06Loryn
 

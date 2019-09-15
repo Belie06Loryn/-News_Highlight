@@ -9,7 +9,7 @@ base_sources_url = None
 base_articles_url = None
 
 def configure_request(app):
-    global api_key, base_article_url, base_source_url
+    global api_key, base_articles_url, base_sources_url
     api_key = app.config['NEWS_API_KEY']
     base_sources_url = app.config['NEWS_SOURCES_API_BASE_URL']
     base_articles_url = app.config['NEWS_ARTICLES_API_BASE_URL']
@@ -42,7 +42,7 @@ def process_sources(sources_list):
         sources_list: A list of source objects
     '''
     sources_list = []
-    for source_item in source_list:
+    for source_item in sources_list:
         id = source_item.get('id')
         name = source_item.get('name')
         description = source_item.get('description')
