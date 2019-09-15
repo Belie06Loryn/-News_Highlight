@@ -60,11 +60,11 @@ def process_sources(sources_list):
 
 
 
-def get_articles():
+def get_articles(id):
     '''
     Function that gets the json response to our url request
     '''
-    get_articles_url = base_articles_url.format(api_key)
+    get_articles_url = base_articles_url.format(id,api_key)
 
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
@@ -101,4 +101,4 @@ def process_articles(articles_list):
         article_object = Article(id, name, author, title, description, url, urlToImage, publishedAt, content)
         articles.append(article_object)
 
-    return articles_lists
+    return articles
