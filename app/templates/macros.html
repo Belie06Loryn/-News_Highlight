@@ -2,26 +2,20 @@
 <body>
     <div class="col-md-1"></div>
     <div class="col-md-10" style="text-align:center">
-        <ul>
-            {% for source_item in sources_lists %}
-            <li style="list-style-type:none;"><h3> <a href="{{ source_item.url}}">{{ source_item.name}}</a> </h3></li>
-            <li style="list-style-type:none"><p> {{ source_item.description }} </p></li>
-            <a href="/isoko/{{ source_item.id }}" class="btn btn-primary">Click Here For Articles</a>
-            
-            <hr> 
-            {% endfor %}
-        </ul>
+        <div class="item">
+                <ul>
+                        {% for source_item in sources_lists %}
+                        <li style="list-style-type:none;"><h3> <a href="{{ source_item.url}}">{{ source_item.name}}</a> </h3></li>
+                        <li style="list-style-type:none"><p> {{ source_item.description }} </p></li>
+                        <a href="/isoko/{{ source_item.id }}" class="btn btn-primary">Click Here For Articles</a>
+                        
+                        <hr> 
+                        {% endfor %}
+                    </ul>
+        </div>
     </div>
     <div class="col-md-1"></div>
 </body>
 {% endmacro %}
 
-
-<!-- {% macro displayArticle(articles) %}
-
-    {% for articles_item in articles %}
-        <li style="list-style-type:none"> {{ articles_item.title }} </li>
-    {% endfor %}
-
-{% endmacro %} -->
 
